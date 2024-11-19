@@ -1,9 +1,23 @@
 version: 2
 
 models:
-    - name: stg_orders
-      columns:
-        - name: customer_id
-        - name: customer_name
-        - name: ordered_at
-        - name: store_id
+  - name: stg_orders
+    columns:
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+          - not_null
+
+      - name: customer_name
+        tests:
+          - not_null
+
+      - name: ordered_at
+        tests:
+          - not_null
+
+      - name: store_id
+        tests:
+          - not_null
