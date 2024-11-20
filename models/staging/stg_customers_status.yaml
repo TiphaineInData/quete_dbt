@@ -1,0 +1,19 @@
+version: 2
+
+models:
+    - name: stg_customers_status
+      description: Explanation of customer status according to their order count
+      columns:
+        - name: customer_status
+          description: The different possible status
+          tests :
+          - not_null
+          - unique
+        - name: min_order_count
+          description: The minimum count of orders to be in the status indicated
+          tests :
+          - unique
+        - name: max_order_count
+          description: The maximum count of orders to be in the status indicated
+          tests :
+          - unique
